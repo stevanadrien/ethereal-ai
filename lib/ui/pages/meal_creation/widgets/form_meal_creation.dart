@@ -26,7 +26,7 @@ class FormMealCreation extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "How many people are you cooking for?",
+                    "Berapa hari yang kamu inginkan untuk direncanakan",
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -45,7 +45,7 @@ class FormMealCreation extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "How long do you want to cook?",
+                    "Berapa jumlah porsi yang ingin kamu masak?",
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -54,10 +54,10 @@ class FormMealCreation extends StatelessWidget {
                   SegmentedButton(
                     multiSelectionEnabled: false,
                     segments: const [
-                      ButtonSegment(label: Text("15 m"), value: 15),
-                      ButtonSegment(label: Text("30 m"), value: 30),
-                      ButtonSegment(label: Text("45 m"), value: 45),
-                      ButtonSegment(label: Text("60 m"), value: 60),
+                      ButtonSegment(label: Text("1 orang"), value: 1),
+                      ButtonSegment(label: Text("2 orang"), value: 2),
+                      ButtonSegment(label: Text("3 orang"), value: 3),
+                      ButtonSegment(label: Text("5 orang"), value: 5),
                     ],
                     selected: {state.maxTimeCooking},
                     onSelectionChanged: (selections) => context.read<MealCubit>().setMaxTimeCooking(selections.first),
@@ -66,7 +66,7 @@ class FormMealCreation extends StatelessWidget {
               ),
               TextField(
                 decoration: InputDecoration(
-                  labelText: "Do you have any intolerances? (optional)",
+                  labelText: "Input your ingredients",
                   labelStyle: Theme.of(context).textTheme.bodyMedium,
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
@@ -141,7 +141,7 @@ class FormMealCreation extends StatelessWidget {
           flex: 1,
           child: ElevatedButton.icon(
             icon: Icon(Icons.set_meal_rounded, color: Theme.of(context).colorScheme.onPrimary),
-            onPressed: state.isReadyToGenerate() ? () => context.read<MealCubit>().getMeal() : null,
+            onPressed: () => context.read<MealCubit>().getMeal(),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
               minimumSize: const Size(320, 50),

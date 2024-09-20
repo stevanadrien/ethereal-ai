@@ -4,10 +4,12 @@ import 'package:pic_2_plate_ai/data/repository/gemini_meal_repository.dart';
 import 'package:pic_2_plate_ai/domain/cubit/meal/meal_cubit.dart';
 import 'package:pic_2_plate_ai/ui/pages/meal_creation/meal_creation_page.dart';
 import 'package:pic_2_plate_ai/ui/pages/onboarding/onboarding_page.dart';
+import 'package:pic_2_plate_ai/screens/peran_screen.dart';
 
 abstract class RoutesNames {
   static const String onboarding = '/';
   static const String mealCreation = '/meal-creation';
+  static const String peran = '/peran';
 }
 
 class AppRouter {
@@ -28,6 +30,8 @@ class AppRouter {
             child: const MealCreationPage(),
           ),
         );
+      case RoutesNames.peran:
+        return MaterialPageRoute(builder: (_) => PeranScreen());
       default:
         throw StateError('Route not found');
     }
